@@ -41,12 +41,11 @@ parameter_types! {
 }
 
 impl pallet_nft::Config for Test {
-	type Currency = Balances;
+	// type Currency = Balances;
 	type Event = Event;
-	type WeightInfo = pallet_nft::weights::BasiliskWeight<Test>;
-	type TokenDeposit = InstanceDeposit;
-	type NftClassId = u32;
-	type NftInstanceId = u32;
+	type CollectionId = u32;
+	type NftId = u32;
+	type ResourceId = u32;
 	type ProtocolOrigin = EnsureRoot<AccountId>;
 }
 
@@ -76,7 +75,7 @@ impl pallet_uniques::Config for Test {
 	type KeyLimit = KeyLimit;
 	type ValueLimit = ValueLimit;
 	type WeightInfo = ();
-	type InstanceReserveStrategy = NFT;
+	// type InstanceReserveStrategy = NFT;
 }
 
 parameter_types! {
@@ -125,7 +124,8 @@ impl pallet_balances::Config for Test {
 	type MaxLocks = ();
 	type WeightInfo = ();
 	type MaxReserves = MaxReserves;
-	type ReserveIdentifier = ReserveIdentifier;
+	// type ReserveIdentifier = ReserveIdentifier;
+	type ReserveIdentifier = ();
 }
 
 pub const ALICE: AccountId = AccountId::new([1u8; 32]);
