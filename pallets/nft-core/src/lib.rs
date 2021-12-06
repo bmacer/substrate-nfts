@@ -190,7 +190,8 @@ pub mod pallet {
 			let metadata_bounded =
 				Self::to_bounded_string(metadata.ok_or(Error::<T>::MetadataNotSet)?)?;
 			let author = author.ok_or(Error::<T>::AuthorNotSet)?;
-			let royalty = royalty.ok_or(Error::<T>::RoyaltyNotSet)?;
+			let royalty = royalty.or(Some(0)).unwrap();
+			//  .ok_or(Error::<T>::RoyaltyNotSet)?;
 
 			NFTs::<T>::insert(
 				collection_id,
